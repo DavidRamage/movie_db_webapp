@@ -11,3 +11,7 @@ This contains the SQL script used to create the database
 ## lambda
 This contains the Lambda functions used by the web services and their
 dependencies.  The directory name corresponds to the Lambda name.
+# lambda/get_all_movies
+This function gets all movies in the db
+# lambda/create_movie
+This function creates a new movie in the database
