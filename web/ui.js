@@ -67,15 +67,31 @@ function new_movie_openform() {
 	});
 }
 
+function delete_movie(movie_id) {
+	$.ajax({
+		type: 'DELETE',
+		url: apiUrl + '/movie/' + movie_id + '/',
+		headers: {"Authorization" : id_token},
+		success: function(data) {
+			get_movies()
+		},
+		error: function(data) {
+			console.log(data);
+			get_movies();
+		}
+	});
+}
+
 function draw_movie_table(movies) {
 	var table_html = '<table id ="movietable" class = "ui-widget">' + "\n";
 	table_html += '<thead class = "ui-widget-header">' + "\n";
-	table_html += '<tr><th>Movie Name</th><th>Length</th><th>Year</th><th>Rating</th><th>Format</th></tr>' + "\n";
+	table_html += '<tr><th>Movie Name</th><th>Length</th><th>Year</th><th>Rating</th><th>Format</th><th>Delete Movie</th></tr>' + "\n";
 	table_html += "</thead>\n";
 	table_html += '<tbody class = "ui-widget-content">' + "\n";
 	for (var movie of movies) {
 		table_html += '<tr><td>' + movie.name + '</td><td>' + movie.length + '</td><td>' + movie.year + '</td>';
-		table_html += '<td>' + movie.rating + '</td><td>' + movie.format + '</td></tr>' + "\n";
+		table_html += '<td>' + movie.rating + '</td><td>' + movie.format + '</td>';
+		table_html += '<td><button id = "movie_' + movie.id + '" class="moviedelete">Delete</button></td></tr>' + "\n";
 	}
 	table_html += "</tbody>\n</table>\n"
 	table_html += '<button id ="newmovie" type="button" class="ui-button">Add Movie</button>' + "\n";
@@ -83,6 +99,9 @@ function draw_movie_table(movies) {
 	$("#newmovie").click(function(event) {
 		console.log("new movie button fires");
 		new_movie_openform();
+	});
+	$(".moviedelete").on('click', function(event) {
+		delete_movie(event.target.id.split('_')[1]);
 	});
 
 }
