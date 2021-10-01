@@ -3,16 +3,19 @@ var id_token = null;
 var movies = null;
 var formats = null;
 var apiUrl = 'https://bxyfauhz4j.execute-api.us-west-2.amazonaws.com/Dev';
+//put id token in global scope
 function set_id_token(new_id_token) {
 	id_token = new_id_token;
 }
+//put movies in global scope
 function set_movies(movies_in) {
 	movies = movies_in;
 }
+//put formats in global scope
 function set_formats(formats_in) {
 	formats = formats_in;
 }
-
+//api call to create a movie
 function create_movie(new_movie_payload) {
 	$.ajax({
 		type: 'POST',
@@ -31,7 +34,7 @@ function create_movie(new_movie_payload) {
 		}
 	});
 }
-
+//api call to update a movie
 function update_movie(update_movie_payload) {
 	$.ajax({
 		type: 'PUT',
@@ -50,7 +53,7 @@ function update_movie(update_movie_payload) {
 		}
 	});
 }
-
+//populate form and build event for editing a movie
 function edit_movie_openform(movie_id) {
 	var form_html = '<label for = "name">Movie Name:</label>';
 	form_html += '<input type="text" name="name" id="name">' + "<br>\n";
@@ -87,6 +90,7 @@ function edit_movie_openform(movie_id) {
 	});
 }
 
+//populate form and build event for creating a new movie
 function new_movie_openform() {
 	var form_html = '<label for = "name">Movie Name:</label>';
 	form_html += '<input type="text" name="name" id="name">' + "<br>\n";
@@ -122,6 +126,7 @@ function new_movie_openform() {
 	});
 }
 
+//api call to delete a movie
 function delete_movie(movie_id) {
 	$.ajax({
 		type: 'DELETE',
@@ -137,6 +142,7 @@ function delete_movie(movie_id) {
 	});
 }
 
+//update movies as displayed to the user
 function draw_movie_table(movies) {
 	var table_html = '<table id ="movietable" class = "ui-widget">' + "\n";
 	table_html += '<thead class = "ui-widget-header">' + "\n";
@@ -205,6 +211,7 @@ function get_formats() {
 	});
 }
 
+//initial load of the page
 $(document).ready(function() {
 	var userPoolId = 'us-west-2_qv86JlrBI';
 	var clientId = '17cr8gqsj2fuv2lm091satl88i';
