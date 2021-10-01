@@ -54,6 +54,7 @@ specify an OAuth Scope or a Request Validator.
 ### Mapping Template For Delete Method
 We use a query string in the delete method.  A simple mapping template is created
 for this
+
 `
 {
 	"movie_id": "$input.params('movie_id')"
