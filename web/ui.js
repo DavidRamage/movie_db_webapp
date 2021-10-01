@@ -70,7 +70,7 @@ function new_movie_openform() {
 function delete_movie(movie_id) {
 	$.ajax({
 		type: 'DELETE',
-		url: apiUrl + '/movie/' + movie_id + '/',
+		url: apiUrl + '/?movie_id=' + movie_id,
 		headers: {"Authorization" : id_token},
 		success: function(data) {
 			get_movies()

@@ -26,7 +26,7 @@ def lambda_handler(event, context):
     	cursor = conn.cursor()
 
     	query = """ DELETE FROM movies where id=%s"""
-    	record = (event['pathParameters']['movie_id'],)
+    	record = (event['movie_id'],)
     	cursor.execute(query, record)
     	conn.commit()
     except Exception as ex:
@@ -40,5 +40,5 @@ def lambda_handler(event, context):
     	conn.close()
     	return {
     	    'statusCode': 200,
-    	    'body': json.dumps("Deleted " + str(count) + " rows")
+    	    'body': 'Deleted ' + str(cursor.rowcount) + ' rows'
     	}
