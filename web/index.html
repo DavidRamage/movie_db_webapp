@@ -1,0 +1,23 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/aws-cognito-sdk.min.js"></script>
+<script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/amazon-cognito-identity.min.js"></script>
+<script src="ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+<div id="c_logonform">
+	<form id = "logon" name = "logon">
+		<label for="username">Username:</label>
+	        <input type="text" name = "username"><br>
+		<label for="password">Password:</label>
+		<input type="password" name = "password"><br>
+		<input type="submit" value="Logon">
+	</form>
+</div>
+<div id = "movietable"></div>
+</body>
+</html>
